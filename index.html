@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Unit operation</title>
+<style>
+.HorizontalNavBar
+{
+	position:fixed;
+	left:0;
+	top:0;
+	width:17%;
+	height:100%;
+	border:2px solid black;	
+	padding:5px;
+	overflow:scroll;
+}
+.main{
+	position:fixed;
+	left:18%;
+	top:0;
+	width:83%;
+	height:100%;
+	padding-left:50px;
+	overflow:auto;
+}
+p{
+ background-color:transparent;
+ border:none;
+ cursor:pointer;
+}
+p:hover 
+{
+ background-color:#FFF8DC;
+ color:orange;
+ font-weight:bold;
+}
+</style>
+<script>
+function displaySimulation(exp)
+{
+	document.getElementById("info").style.visibility="hidden";
+	document.getElementById("sim").style.display="block";
+	document.getElementById("sim").src=exp;
+}
+<!-- function alerting() -->
+<!-- { -->
+	<!-- alert("Click on the experiment name in the navigation bar to view the silmulation"); -->
+<!-- } -->
+</script>
+</head>
+<body onload="alerting()">
+<div class="HorizontalNavBar">
+	<span>
+	<ol>
+		<li><p id="PFR_final/index.html" onclick="displaySimulation(id)">PFR</p></li>
+	</ol>	
+	</span>
+	<!-- <h3>Introduction to Ladder Logic</h3> -->
+	<!-- <ol> -->
+		<!-- <li><p id="introductionToLadderLogic/andLogic/index.html" onclick="displaySimulation(id)">AND Logic</p></li> -->
+		<!-- <li><p id="introductionToLadderLogic/nandLogic/index.html" onclick="displaySimulation(id)">NAND Logic</p></li> -->
+		<!-- <li><p id="introductionToLadderLogic/notLogic/index.html" onclick="displaySimulation(id)">NOT Logic</p></li> -->
+		<!-- <li><p id="introductionToLadderLogic/orLogic/index.html" onclick="displaySimulation(id)">OR Logic</p></li> -->
+		<!-- <li><p id="introductionToLadderLogic/norLogic/index.html" onclick="displaySimulation(id)">NOR Logic</p></li> -->
+		<!-- <li><p id="introductionToLadderLogic/exOrLogic/index.html" onclick="displaySimulation(id)">ExOR Logic</p></li> -->
+		<!-- <li><p id="introductionToLadderLogic/exNorLogic/index.html" onclick="displaySimulation(id)">ExNOR Logic</p></li> -->
+	<!-- </ol> -->
+	<!-- <span> -->
+	<!-- <h3>PLC Timer Instruction</h3> -->
+	<!-- <ol> -->
+		<!-- <li><p id="timerInstruction/onDelay/index.html" onclick="displaySimulation(id)">PLC On-Delay Timer Instruction</p></li> -->
+		<!-- <li><p id="timerInstruction/offDelay/index.html" onclick="displaySimulation(id)">PLC Off-Delay Timer Instruction</p></li> -->
+		<!-- <li><p id="timerInstruction/retentive/index.html" onclick="displaySimulation(id)">PLC Retentive Timer On Instruction</p></li> -->
+	<!-- </ol> -->
+	<!-- </span> -->
+	<!-- <span> -->
+	<!-- <h3>PLC Counter Instruction</h3> -->
+	<!-- <ol> -->
+		<!-- <li><p id="counterInstruction/countUp/index.html" onclick="displaySimulation(id)">PLC Count-Up Instruction</p></li> -->
+		<!-- <li><p id="counterInstruction/countDown/index.html" onclick="displaySimulation(id)">PLC Count-Down Instruction</p></li> -->
+	<!-- </ol> -->
+	<!-- </span> -->
+	<!-- <span> -->
+	<!-- <h3>Application Of PLC</h3> -->
+	<!-- <ol> -->
+		<!-- <li><p id="appPLC/garage/index.html" onclick="displaySimulation(id)">Garage Shutter Opening and Closing Using PLC</p></li> -->
+		<!-- <li><p id="appPLC/containerFilling/index.html" onclick="displaySimulation(id)">Container Filling Process Using PLC</p></li> -->
+		<!-- <li><p id="appPLC/simultaneousOutputInterlock/index.html" onclick="displaySimulation(id)">Simultaneous output interlock using PLC</p></li> -->
+		<!-- <li><p id="appPLC/operationLimiter/index.html" onclick="displaySimulation(id)">Maximum Simultaneous Operations Limiter using PLC</p></li> -->
+		<!-- <li><p id="appPLC/motorForwardAndReverseDirection/index.html" onclick="displaySimulation(id)">Motor forward and reverse direction control using PLC</p></li> -->
+	<!-- </ol> -->
+	<!-- </span> -->
+</div>
+<div class="main" style="background-color:#FFF8DC;">
+	<h2 id="info" style="display:block">
+		<h1 style="text-align:center;"></h1>
+		<h2>Simulation:</h2>
+		<h2>Click on the experiment name in the navigation bar to view the silmulation.</h2> 
+			</h2>
+	<iframe id="sim" style="border:none; position:absolute; top:0px; width:980px; height:650px; display:none;">Click on the experiment name in the navigation bar to view the silmulation</iframe>
+</div>
+</body
+</html>
