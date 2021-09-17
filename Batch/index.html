@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>SOLVE</title>
+    <link rel="stylesheet" href="css/sgca.css" />
+    <link rel="stylesheet" href="css/mathstyle.css" />
+    <script type="text/javascript" src="js/jquerymin.js"></script>
+    <script src="js/propeller.min.js"></script>
+    <script type="text/javascript" src="js/sgca.js"></script>
+    <script>
+        var simsubscreennum = 0;
+        var temp = 0;
+        var lnt = 0;
+        var n;
+        new Propeller(document.getElementById("rot1"), { inertia: 0 });
+
+    </script>
+    <style>
+        .popup {
+            border-radius: 5px;
+            background-color: black;
+            color: white;
+            padding: 5px;
+        }
+        
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted black;
+        }
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 500px;
+            background-color: black;
+            color: #fff;
+            border-radius: 6px;
+            padding: 10px 10px 10px 10px;
+            /* Position the tooltip */
+            position: absolute;
+            z-index: 100;
+        }
+        
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+        }
+    </style>
+
+</head>
+
+<body style="margin:0; font-family:verdana; font-size:14px; " >
+    <!--Simulation Screen start		-->
+    <div id="simscreen">
+
+        <!--Title of Simulation		-->
+        <div id="titleLarge" class="title" style="visibility: visible;font-size:20px;">
+            <h3>Reaction kinetic studies in a batch reactor</h3>
+        </div>
+        &nbsp;<div id="titleSmall" class="title2" style="visibility:hidden; cursor:pointer;">
+            <h4 id="subTitle" >Reaction kinetic studies in a batch reactor</h4>
+            <!-- <h4 id="subTitle" onmouseenter="changeSubTitle()" onmouseleave="changeSubTitleBack()" onclick="changeCanvas()">Reaction kinetic studies in plug flow reactor</h4> -->
+        </div>
+
+        <div id="buttonsList" style="position: absolute; visibility: hidden; top: 20px; left: 400px; color: white; z-index: 1;">
+            <div style="">
+                <button id="demoButton" style="width: 90px; height: 25px; border-radius: 5px; border: solid 2px #fff; background-color: black; color: white;"><b>Demo</b></button>
+                <button id="labelButton" style="width: 90px; height: 25px; border-radius: 5px; border: solid 2px #fff; background-color: black; color: white;"><b>Label</b></button>
+                <button id="setupButton" style="width: 90px; height: 25px; border-radius: 5px; border: solid 2px #fff; background-color: black; color: white;"><b>Setup</b></button>
+                <button id="expButton" style="width: 90px; height: 25px; border-radius: 5px; border: solid 2px #fff; background-color: black; color: white;"><b>Experiment</b></button>
+            </div>
+        </div>
+        <div id="buttonsListEval" style="position: absolute; visibility: hidden; top: 20px; left: 470px; color: white; z-index: 1;">
+            <div style="">
+                <button id="demoButtonEval" style="width: 90px; height: 25px; border-radius: 5px; border: solid 2px #fff; background-color: black; color: white;"><b>Demo</b></button>
+                <button id="labelButtonEval" style="width: 90px; height: 25px; border-radius: 5px; border: solid 2px #fff; background-color: black; color: white;"><b>Data</b></button>
+                <button id="setupButtonEval" style="width: 90px; height: 25px; border-radius: 5px; border: solid 2px #fff; background-color: black; color: white;"><b>Evaluation</b></button>
+            </div>
+        </div>
+        <!--SubScreen Home	-->
+        <div class="simsubscreen" id="canvas0" style="background-color: black;">
+
+            <p id="start" style="position: absolute; width: 800px; top: 150px; left: 90px; color: white; font-size:x-large">Department of Chemical engineering NITK presents...</p>
+            <p id="landingPageButton" style="position: absolute; top: 400px; left: 600px; color: white; visibility: hidden;"><b>CONTINUE..</b></p>
+        </div>
+
+        <!--Step1	-->
+        <div class="simsubscreen" id="canvas1" style="visibility:hidden">
+            <!-- <strong id="titlestep" class="incanvas">STEP </strong>
+<span class="circlebg" id="stepnumber">&nbsp;1&nbsp;</span> -->
+            <p id="pumptext" class="steptext" style="position: absolute; font-family:verdana; font-size:14px; color: #fff; top: 50px; left: 50px;">Choose what you want to do.</p>
+
+            <p style="position: absolute; top:60px; left: 170px; font-size:20px;"><b>What would you like to do?</b></p>
+
+            <button onclick="selectAction(1)" style="position: absolute; top: 130px; left: 250px; width: 250px; height: 30px;">Perform experiment</button>
+            <button onclick="selectAction(2)" style="position: absolute; top: 170px; left: 250px; width: 250px; height: 30px">Evaluate yourself</button>
+
+            <!-- <img id="" style="position: absolute; left: 430px; top: 255px;" src="Images/ewm.png"/> -->
+            <!-- <img id="a4" style="position: absolute; left: 520px; top: 50px;visibility:hidden;" src="Images/1.12.png"/> -->
+            <!-- <p id="can1" style="position:absolute;top: 450px; left:28px; font-family:verdana; font-size:14px;"></p> -->
+            <p id="v1" style="position:absolute;left: 530.5px; top:342px;font-family:verdana; font-size:14px;"></p>
+
+        </div>
+
+        <!-- ADDITIONAL STEP ADDED -->
+        <div class="simsubscreen" id="canvas5" style="visibility:hidden">
+
+            <p class="step5p" style="position: absolute; font-family:verdana; font-size:24px; color: #fff; top: 200px; left: 200px;">VIRTUAL LAB @ NITK</p>
+
+        </div>
+
+        <div class="simsubscreen" id="canvas6" style="visibility:hidden">
+
+            <div id="demoOne" style="position: absolute; visibility: hidden; top: 50px; left: 20px; width: 700px; color: #1981e2; font-size: 16px;">
+                <ul>
+                    <li>
+                        Click on Label Tab to see the Experimental Setup.
+                    </li>
+                    <li>
+                        Click on Setup Tab to Configure Experimental Setup.
+                    </li>
+                    <li>
+                        Click on Experiment Tab to perform the experiment.
+                    </li>
+                    <li>
+                        Calculate and Enter the volume of NaOH and Ethyl Acetate.
+                    </li>
+                    <li>
+                        Click add NaOH button.
+                    </li>
+					<li>
+                        Once Set Temperature and Current Temperature are same you can add preheated Ethyle Acetate.
+                    </li>
+					<li>
+                        Simultaneously stop watch is started and enter the readings to the observation by clicking add current readings button.
+                    </li>
+                </ul>
+            </div>
+
+            <div id="demoTwo" style="position: absolute; visibility: hidden; top: 70px; left: 20px; width: 700px; color: #1981e2; font-weight:bold;">
+                <ul>
+                    <li>
+                        Click on <span class="fontColorChange">Data</span> tab to configure Experimental data.
+                    </li>
+                    <li>
+                        Click on <span class="fontColorChange">Evaluate</span> button to see the <span class="fontColorChange">Results</span>.
+                    </li>
+                    <li>
+                        Click on <span class="fontColorChange">Evaluation</span> tab to check the Simulated Values.
+                    </li>
+                    <!-- <li> -->
+                        <!-- To perform Experiment again click on title of experiment. -->
+                    <!-- </li> -->
+                </ul>
+            </div>
+
+        </div>
+
+        <!--Step2	-->
+
+        <div class="simsubscreen" id="canvas2" style="visibility:hidden">
+
+            <!-- <strong id="titlestep" class="incanvas">STEP &nbsp;</strong>
+<span class="circlebg" id="stepnumber">&nbsp;2&nbsp;</span> -->
+            <p id="step2Heading" class="steptext" style="font-family:verdana; font-size:14px;">&nbsp;Details</p>
+            <!-- EXPERIMENT PART -->
+            <img id="labelImage" style="visibility: hidden; position: absolute; left: 165px; top: 40px;" src="./Images/label.png">
+
+            <!-- Evaluation part -->
+            <div id="configExp" style="font-weight:bold;">
+                <p style="position: absolute; left:30px; top: 50px; color: #1981e2;font-style: italic;">Reaction Temperature :
+                    <input style="position: absolute; left: 260px;" type="number" step="1" value="30" id="reactionTempEval" name="Reaction Temperature" min="30" max="50">
+                    <p style="color:#1981e2; position: absolute; left: 440px; top: 50px;font-style: italic;">° Celsius</p>
+                </p>
+                <p style="position: absolute; left:30px; top: 100px; color: rgb(131, 117, 117);font-style: italic;">Rate Constant(k) :
+                    <input style="position: absolute; left: 260px;" type="number" value="" id="rateConstEval" >
+                    <p style="color:rgb(131, 117, 117); position: absolute; left: 450px; top: 100px;font-style: italic;">Litre/gmol.min</p>
+                </p>
+                <p style="position: absolute; left:30px; top: 150px; color:rgb(131, 117, 117);font-style: italic;">Frequency Factor(k<sub>0</sub>) :
+                    <input style="position: absolute; left: 260px;" type="number" value="" id="freqFactor" >
+                    <p style="color:rgb(131, 117, 117); position: absolute; left: 450px; top: 150px;font-style: italic;">x10<sup>8</sup> (Litre/gmol.min)</p>
+                </p>
+                <p style="position: absolute;  left:30px; top: 200px; color: rgb(131, 117, 117);font-style: italic;">Activation Energy (E):
+                    <input style="position: absolute; left: 260px;" type="number" value="" id="activationEnergy" >
+                    <p style="color:rgb(131, 117, 117); position: absolute; left: 450px; top: 200px;font-style: italic;">J/mol</p>
+                </p>
+                <button id="evaluateButtonFromData" style="position: absolute; top: 280px; left:75%; padding:15px; font-weight:bold;">EVALUATE</button>
+				<div id="highlightEvaluation" style="position: absolute; top: -27.5px; left:655px; width: 92px; height:30px; border:4px solid yellow; border-radius:3px; visibility:hidden;"></div>
+
+            </div>
+
+            <p id="v2" style="position:absolute;left: 530.5px; top:342px;font-family:verdana; font-size:14px;"></p>
+
+        </div>
+
+        <!--Step3	-->
+        <div class="simsubscreen" id="canvas3" style="visibility:hidden">
+            <!-- <strong class="incanvas">STEP &nbsp;</strong><span class="circlebg">&nbsp;3&nbsp;</span> -->
+            <p id="step3Heading" class="steptext" style="font-family:verdana; font-size:14px; color: #fff;">&nbsp; </p>
+            <!-- EXPERIMENT PART -->
+            <div id="experimentSetup" style="visibility: hidden; left: 100px; font-weight:bold;">
+
+				<p style="position: absolute; left:50px; top: 50px; color: #1981e2;">Reaction Volume :
+                    <input id="reactorVol" style="position: absolute; left: 298.5px; width:60px;" type="number" step="0.1" value="1"  name="Reaction Temperature" min="1" max="5">
+                    <p style="color:#1981e2; position: absolute; left: 421px; top: 50px;font-style: italic;">Litre</p>
+                </p>
+				<p style="position: absolute; left:50px; top: 100px; color: #1981e2;">Initial Molar Ratio of the Reactants :
+                    <input id="intialMolar" style="position: absolute; left: 298.5px; width:60px;" type="number" step="0.1" value="1"  name="Reaction Temperature" min="1" max="2">
+                </p>
+                <p style="position: absolute; left:50px; top: 150px; color: #1981e2;">Stock Concentration of Ethyl Acetate :</p>
+                <div class="" style="position: absolute; top: 150px; left: 347.5px; color: #39ff14;">
+                    <span id="rangeValueEthyl" style="color:#0dd635">0.020 M</span>
+                    <Input class="range" type="range" name="" step="0.005" value="0.020" min="0.020" max="0.060" id="acConc" onChange="rangeSlideEthyl(this.value)" onmousemove="rangeSlideEthyl(this.value)"></Input>
+                </div>
+
+                <p style="position: absolute; left:50px; top: 200px; color: #1981e2;">Stock Concentration of NaOH :</p>
+                <div class="" style="position: absolute; top: 200px; left: 347.5px; color: #39ff14;">
+                    <span id="rangeValueNaOH" style="color:#0dd635">0.020 M</span>
+                    <Input class="range" type="range" name="" step="0.005" value="0.020" min="0.020" max="0.060" id="ohConc" onChange="rangeSlideNaOH(this.value)" onmousemove="rangeSlideNaOH(this.value)"></Input>
+                </div>
+
+                <p style="position: absolute; left:50px; top: 250px; color: #1981e2;">Reaction Temperature :
+                    <input id="reactionTemp" style="position: absolute; left: 298.5px; width:60px;" type="number" step="1" value="30"  name="Reaction Temperature" min="30" max="50" onchange="setReactorTemp();">
+                    <p style="color:#1981e2; position: absolute; left: 417.5px; top: 250px;">° Celsius</p>
+                </p>
+
+
+            </div>
+
+            <!-- Evaluation Part -->
+            <div id="evaluatePart">
+                <!-- <p style="position: absolute; top: 30px; color: #fff;">Number of Observations:
+                    <input type="number" value="0" id="evalSets" name="length" min="1" max="100" onchange="setEvalSets();">
+                </p> -->
+                <div style="position: absolute;  width: 790px; height: 200px;">
+                    <h3 style="position: absolute; width:auto; top: -20px; color:#fff; left:330px;">User values</h3>
+                    <table id="configInputTable" style="font-size: 12px; position:absolute; border: 1px solid #fff; width: 770px; top:15px; left:12px;">
+                        <tr style="background-color:lightgrey;">
+                            <th style="background-color:lightgrey;">Temperature(Celsius)</th>
+                            <th style="background-color:lightgrey;">Rate constant (litre/gmol.min)</th>
+                            <th style="background-color:lightgrey;">Frequency Factor x10<sup>(-8)</sup>(litre/gmol.min)</th>
+                            <th style="background-color:lightgrey;">Activation Energy(J/mol)</th>
+                        </tr>
+                    </table>
+                </div>
+                <div style="position: absolute; top:250px; width: 790px; height: 230px;">
+                    <h3 style="position: absolute; width:auto; top: 0px; color:#fff; left:330px;">Simulated values</h3>
+                    <table id="configSimulatedTable" style="font-size: 12px; position:absolute; border: 1px solid #fff; width: 770px; top:40px; left:13px; ">
+                        <tr style="background-color:lightgrey;">
+                            <th style="background-color:lightgrey;">Temperature(Celsius)</th>
+                            <th style="background-color:lightgrey;">Rate constant (litre/gmol.min)</th>
+                            <th style="background-color:lightgrey;">Frequency Factor x10<sup>(-8)</sup>(litre/gmol.min)</th>
+                            <th style="background-color:lightgrey;">Activation Energy(J/mol)</th>
+                        </tr>
+                    </table>
+                </div>
+                <!-- <table id="configResultTable" style=" font-size: 12px; position:absolute; border: 1px solid #fff; left: 470px; width: 250px; top:70px;">
+                    <tr style="">
+                        <th>Reynolds no.</th>
+                        <th>Friction factor * 10<sup>4</sup></th>
+                    </tr>
+                </table> -->
+                <p id="showResRey" style="position: absolute; left: 300px; top: 400px;"></p>
+                <p id="showResInFric" style="position: absolute; left: 470px; top: 180px;"></p>
+				<button id="clearEvaluationReadings" style="position: absolute; left: 350px; top: 500px; padding:5px; font-weight:bold;">Clear All Readings</button>
+                <!-- <button style="position: absolute; left: 600px; top: 40px; width: 100px;" onclick="evaluateConfig();">EVALUATE</button> -->
+            </div>
+
+            <p id="can3" style="position:absolute;top: 450px; left:28px;font-family:verdana; font-size:14px;"></p>
+            <p id="v3" style="position:absolute;left: 530.5px; top:342px;font-family:verdana; font-size:14px;"></p>
+        </div>
+
+
+        <!--Step4	-->
+        <div class="simsubscreen" id="canvas4" style="visibility:hidden">
+            <p id="step4Heading" class="steptext" style="font-family:verdana; font-size:14px;">&nbsp;Experiment.</p>
+            <!-- EXPERIMENT PART -->
+            
+            <div id="experimentID" style="visibility: hidden;">
+                <img style="position: absolute; left: 50px; top:100px; z-index: 2; width:40%;" src="./Images/device.png" alt="">
+                <img style="position: absolute; left: 500px; top:20px; z-index: 2; height:30%;" src="./Images/temp.png" alt="">
+				<div id="heater" style="position:absolute; left:679.5px; top:140px; background-color:#800000; width:20.5px; height:20px; border-radius:14px; border:3px solid lightgrey; z-index:2;"></div>
+				<p id="setTemp" style="color:red; position: absolute; left: 555px; top: 54.5px; font-weight:bold; z-index:2;"></p>
+				<p id="curTemp" style="color:red; position: absolute; left: 680px; top: 54.5px; font-weight:bold; z-index:2;"></p>
+				<p id="conduct" style="color:red; position: absolute; left: 670px; top: 91px; font-weight:bold; z-index:2;"></p>
+				<!-- <img id="tube" style="position: absolute; left: 520px; top:250px; z-index: 2; " src="./Images/tube.png" alt=""> -->
+                <img id="tubeA" style="position: absolute; left: 520px; top:250px; z-index: 2; " src="./Images/A.png" alt=""> 
+                <img id="tubeB" style="position: absolute; left: 662.5px; top:250px; z-index: 2; " src="./Images/B.png" alt=""> 
+                <img id="stopwatch" style="position: absolute; left: 505px; top:185px; z-index: 2; visibility:hidden;" src="./Images/stopwatch.png" alt="">
+				<div id="time" style="position:absolute; left:580px; top:202.5px; z-index:2; color:red; visibility:hidden;"><h2 id="min">0</h2><h2 id="sec" style="position:absolute; left:80px; top:0px;">0</h2></div>
+				<button id="addReading" style="position:absolute; left:520px; top:270px; background-image: linear-gradient(to down, #FFEB99, #FED430, #E1B400, #C79F00, #a98700); width:225px; height:30px; border-radius:5px; cursor:pointer; border-color:darkgrey; z-index:2; font-weight:bold; visibility:hidden;" onclick="addReadingsToTable()">Add Current Readings</button>
+				<h2 id="msg1" style="position: absolute; left: 505px; top:170px; z-index: 2; color:lightblue; font-style:italic;">Calculated volume of Ethyl Acetate and NaOH:</h2>
+				<input id="volA" style="position: absolute; left: 532.5px; top:415px; width:60px;" type="number" step="1" value="1" id="reactionTempEval" name="Reaction Temperature" min="1" max="3099">
+                <p id="ml1" style="color:#1981e2; position: absolute; left: 602.5px; top: 405px; font-style: italic;"><b>ml</b></p>
+				<input id="volB" style="position: absolute; left: 675px; top: 415px; width:60px;" type="number" step="1" value="1" id="reactionTempEval" name="Reaction Temperature" min="1" max="3099">
+                <p id="ml2" style="color:#1981e2; position: absolute; left: 743px; top: 405px; font-style: italic;"><b>ml</b></p>
+				
+				<button id="addNaOH" style="position:absolute; left:575px; top: 445px; background-image: linear-gradient(to down, #FFEB99, #FED430, #E1B400, #C79F00, #a98700); width:auto; height:auto; border-radius:5px; cursor:pointer; border-color:darkgrey; z-index:2; padding:7.5px; font-weight:bold" onclick="addNaOHToReactor()" title="Add NaOH reactor and Preheat Ethyl Acetate">Add NaOH to Reactor</button>
+				<button id="addEthyl" style="position:absolute; left:350px; top:320px; background-image: linear-gradient(to down, #FFEB99, #FED430, #E1B400, #C79F00, #a98700); width:auto; height:auto; border-radius:5px; cursor:pointer; border-color:darkgrey; z-index:2; padding:7.5px; font-weight:bold; visibility:hidden;" onclick="addEthylToReactor()" title="Add Ethyl Acetate to Reactor and start Stopwatch">Add Ethyle Acetate to Reactor</button>
+				
+				<div id="ethyl" style="position:absolute; left: 540px; top:385px; width:50px; height:0; background-color:lightgrey; opacity:0.4;"></div><!--left: 540px; top:255px; width:50px; height:150px; -->
+				<div id="naoh" style="position:absolute; left: 682px; top:385px; width:100px; height:0; background-color:lightgrey; opacity:0.4; "></div>
+				
+				
+				<img id="msg2" style="position: absolute; left:435px; top:190px; z-index: 2; visibility:hidden;" src="./Images/msg2.png" alt="">
+				<img id="rodHori" style="position: absolute; left:85px; top:235px; z-index: 2; " src="./Images/rodHori.png" alt="">
+				<img id="liquidLid" style="position: absolute; top: 235px; left: 82px; width: 97.5px; height:0px; z-index:3;" src="./Images/192.svg" alt="">
+				<img id="container" style="position: absolute; left:238px; top:365px; z-index: 2; " src="./Images/container.png" alt="">
+            </div>
+			<div id="highlight" style="position: absolute; top: 481px; left: 649px; width: 126px; height:30px; border:5px solid yellow; border-radius:3px; visibility:hidden;"></div>
+            <button id="restart" style="position: absolute; top: 490px; left: 318px; width: 144px; font-size:13px; visibility:hidden;" >Restart Experiment</button>
+
+            <button id="goBackButton" style="position: absolute; top: 490px; left: 525px; width: 124px; font-size:13px;">Experimental Data</button>
+            <button id="obserButton" style="position: absolute; top: 490px; left: 655px; width: 124px; font-size: 13px; ">Observations</button>
+
+            <!-- Observation table! -->
+            <table id="observeTable" style="overflow-y: scroll; font-size: 12px; position:absolute; visibility: hidden; border: 1px solid #fff; width: 700px; top:50px; left: 45px;">
+                <tr style="">
+                    <th>Process fluid</th>
+                    <th>Manometric fluid</th>
+                    <th>Flowrate(lpm)</th>
+                    <th>h1(cm of Manometric fluid)</th>
+                    <th>h2(cm of Manometric fluid)</th>
+                </tr>
+            </table>
+
+
+            <p id="can4" style="position:absolute;top: 450px; left:28px;font-family:verdana; font-size:14px;"></p>
+            <p id="v4" style="position:absolute;left: 530.5px; top:342px;font-family:verdana; font-size:14px;"> </p>
+				
+			<img id="msg" style="position: absolute; top:145px; left: 250px; z-index:2; visibility:hidden;" src="./Images/msg.png" alt="">
+				
+        </div>
+
+
+        <div id="overflow" style="visibility: hidden; position: absolute; width: 800px; height: 530px; z-index: 1000; left: 00px; top: 50px;  text-align: center; color: rgb(0, 0, 0); background-color: rgb(211, 211, 211); opacity: 0.8;">
+            <p style="position: absolute;top: 180px;left:100px;font-weight: bold;font-size: 30px;">Manometric Fluid is about to Overflow.<br> Change the Manometer.</p>
+        </div>
+        <div class="" id="displayExpValues" style="visibility:hidden; height: 465px; width: 760px; top: 50px; left: 15px; position: absolute; background-color: #000; z-index: 1000; border:5px solid darkblue; border-radius:7.5px; font-weight:bold;">
+            <p style="position: absolute; top: 0px; left: 175px; width: 450px; font-size:30px; color: #fff;">Experimental Data</p>
+			<p style="position: absolute; top: 100px; left: 50px; width: 350px; font-size:15px; color:#FFFF00;">Diameter of Reactor Coil :</p>
+            <p style="position: absolute; top: 100px; left: 405px; width: 224px; font-size:15px; color:#39FF14;">33 cm</p>
+			<p style="position: absolute; top: 150px; left: 50px; width: 350px; font-size:15px; color:#FFFF00;">Number of turns in the Coil :</p>
+            <p style="position: absolute; top: 150px; left: 405px; width: 224px; font-size:15px; color:#39FF14;">5</p>
+			<p style="position: absolute; top: 200px; left: 50px; width: 350px; font-size:15px; color:#FFFF00;">Diameter of Reactor tube :</p>
+            <p style="position: absolute; top: 200px; left: 405px; width: 224px; font-size:15px; color:#39FF14;">1.1 cm</p>
+            <p style="position: absolute; top: 250px; left: 50px; width: 350px; font-size:15px; color:#FFFF00;">Stock Concentration of Ethyl Acetate:</p>
+            <p id="acetConc" style="position: absolute; top: 250px; left: 405px; width: 224px; font-size:15px; color:#39FF14;">0.020 M</p>
+            <p style="position: absolute; top: 300px; left: 50px; width: 350px; font-size:15px; color:#FFFF00;">Stock Concentration of NaOH:</p>
+            <p id="ohConce" style="position: absolute; top: 300px; left: 405px; width: 224px; font-size:15px; color:#39FF14;">0.020 M</p>
+            <p style="position: absolute; top: 350px; left: 50px; width: 350px; font-size:15px; color:#FFFF00;">Reaction Temperature:</p>
+            <p id="reactTemp" style="position: absolute; top:350px; left: 405px; width: 224px; font-size:15px; color:#39FF14;">30 degree Celsius</p>
+
+        </div>
+		
+		 <div class="" id="observations" style="visibility:hidden; height: 465px; width: 470px; top: 50px; left: 15px; position: absolute; background-color: #000; z-index: 1000; border:5px solid darkblue; border-radius:7.5px;">
+            <h1 style="position: absolute; top: -10px; left: 120px; color: #fff;">Observations</h1>
+			<table id="observTable" style="position:absolute; left:10px; top:50px; height:auto; width: 450px; background-color:lightgrey;">
+				<tr style="background-color:grey;">
+					<th style="background-color:lightgrey;">Time <br>(seconds)
+					<th style="background-color:lightgrey;">Conductivity <br>(milliSiemens/cm)
+				</tr>
+			</table>
+			<button id="clearTable" style="position:absolute;  left:170px; top:350px; padding:10px; background-image: linear-gradient(to down, #FFEB99, #FED430, #E1B400, #C79F00, #a98700); width:auto; height:auto; border-radius:5px; cursor:pointer; border-color:darkgrey; z-index:2;">Clear all Readings</button>
+        </div>
+
+        <!-- <div id="questDiv" style="position:absolute; background-color:grey; color:white; padding:7.5px; border-radius:5px; visibility:hidden; text-align:justify;">
+<p id="q"></p><select id="answer" >	
+</select>
+<p id="a"></p>
+</div> -->
+
+
+        <!--Trial text	-->
+        <div id="">
+            <p id="trial" style="text-transform: uppercase;visibility :hidden;font-weight: bold;font-family:verdana; "><strong>Trial = </strong></p>
+        </div>
+
+
+        <!--next  Arrow	-->
+        <div id="nav">
+            <img id="nextButton" onclick="navNext(); " src="Images/Next.png" />
+        </div>
+
+        <!--Blinking Arrow	-->
+        <img class="" id="arrow1" style="visibility:hidden" src="Images/arrow1.png" />
+
+        <div id="copyright"> &copy;
+            <!-- <script> -->
+                <!-- document.write(new Date().getFullYear()); -->
+            <!-- </script>  -->
+			SOLVE - The Virtual Lab @ NITK Surathkal</div>
+</body>
+
+</html>

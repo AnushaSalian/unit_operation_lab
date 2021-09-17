@@ -1,0 +1,747 @@
+html
+{
+    -moz-user-select     : none;
+    -khtml-user-select   : none;
+    -webkit-user-select  : none;
+    -o-user-select       : none;
+    user-select          : none;
+}
+#simscreen
+{
+position: relative;
+left:0px;
+top:0px;
+height: 600px; 
+width:800px;
+border:solid 1px;
+background-color:black;
+}
+
+#copyright{
+position: absolute;
+left:280px;
+top: 580px;
+font-family: verdana; 
+font-size:12px;
+color:white;
+font-weight:bold;
+}
+
+.title{
+position:absolute;
+width: 100%;
+left: 0px;
+top: 0px;
+height:40px;
+font-size: 24px;
+text-align:center;
+background-color: black;
+font-family: verdana;
+color: White;
+text-transform: uppercase; 
+}
+
+.title2{
+position:absolute;
+width: 95%;
+left: 10px;
+top: 0px;
+height:40px;
+/* text-align:center; */
+background-color: black;
+font-family: verdana;
+color: White;
+/* text-transform: uppercase;  */
+}
+
+.title h3{
+padding-top:2px;
+margin:0px;
+}
+
+.title2 h3{
+padding-top:2px;
+font-size: 15px;
+/* margin:0px; */
+margin-left: 50px;
+}
+
+    
+#question-div{
+	position: absolute;
+	left:300px;
+	top:350px;
+	width:300px;
+	height:120px;
+	border:solid 1px gray;
+	background-color: gray;
+	filter: alpha(opacity=55);
+	color:white;
+	visibility:hidden;
+}
+
+.simsubscreen
+{
+position:absolute;
+left: 0px;
+top: 40px;
+height:540px;
+width:800px;
+background-color: #000;
+}
+
+.incanvas
+{
+margin:5px 0 0 5px;
+padding:0;
+}
+#nextButton{
+    position: absolute;
+    left: 750px;
+    top: 530px;
+cursor:pointer;
+}
+#nextButton1{
+    position: absolute;
+    left: 750px;
+    top: 530px;
+cursor:pointer;
+}
+
+#prevButton{
+    position: absolute;
+    left: 0px;
+    top: 532px;
+cursor:pointer;
+}
+
+
+.steptext{
+display:inline;}
+
+.steptext-6{
+display:inline;}
+
+.steptext-2{display:inline;}
+
+.circlebg
+{
+border-radius:100%;
+font-size:25px;
+color:#fff;
+text-align:center;
+background:#000
+}
+
+/* -------------------------------------- water ---------------------------------------- */
+/* Chrome, Safari, Opera */
+@-webkit-keyframes water-4 {
+0% {-webkit-transform: translate(0, 0 );}
+100% {-webkit-transform: translate(0, -20px );}
+}
+
+/* Standard syntax */
+@keyframes water-4 {
+    0% {transform: translate(0, 0);}
+    100% {transform: translate(0, -20px);}
+}
+
+@-webkit-keyframes water-5 {
+0% {-webkit-transform: translate(0, 0 );}
+100% {-webkit-transform: translate(0, -35px );}
+}
+
+/* Standard syntax */
+@keyframes water-5 {
+    0% {transform: translate(0, 0);}
+    100% {transform: translate(0, -35px);}
+}
+/* -------------------------------------- constant speed arrow ---------------------------------------- */
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes arrow-1 {
+0% {-webkit-transform: rotate(0deg);}    
+100% {-webkit-transform: rotate(-50deg);}
+}
+
+/* Standard syntax */
+@keyframes arrow-1 {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(-50deg);}
+}
+/* -------------------------------------- constant speed arrow 2 ---------------------------------------- */
+/* Chrome, Safari, Opera */
+@-webkit-keyframes arrow-11 {
+0% {-webkit-transform: rotate(0deg);}    
+100% {-webkit-transform: rotate(70deg);}
+}
+
+/* Standard syntax */
+@keyframes arrow-11 {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(70deg);}
+}
+
+
+
+/* -------------------------------------- ---------------------------------------- */
+/* Chrome, Safari, Opera */
+@-webkit-keyframes valveturn-2 {
+0% {-webkit-transform: rotate(0deg);}    
+100% {-webkit-transform: rotate(-20deg);}
+}
+
+/* Standard syntax */
+@keyframes valveturn-2 {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(-20deg);}
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes valveturn-4 {
+0% {-webkit-transform: rotate(0deg);}    
+100% {-webkit-transform: rotate(-20deg);}
+}
+
+/* Standard syntax */
+@keyframes valveturn-4 {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(-20deg);}
+}
+
+@-webkit-keyframes valveturn-5 {
+    0% {-webkit-transform: rotate(0deg);}    
+    100% {-webkit-transform: rotate(10deg);}
+}
+@keyframes valveturn-5 {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(10deg);}
+}
+
+/* Standard syntax */
+@keyframes water0 {
+    0% {transform: translate(0, 0);}
+    100% {transform: translate(0, -100px);}
+}
+
+/* Standard syntax */
+@keyframes water0 {
+    0% {transform: translate(0, 0);}
+    100% {transform: translate(0, -100px);}
+}
+
+/* LINES : angle of attack */
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+ } 
+ @keyframes fadeOut {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+ } 
+/*-----------------------------------------hook gauge----------------------- */
+/* Chrome, Safari, Opera */
+@-webkit-keyframes myhook-1 {
+0% {-webkit-transform: translate(0, 0 );}
+50% {-webkit-transform: translate(0, -15px );}
+
+100% {-webkit-transform: translate(0, 8px );}
+}
+
+/* Standard syntax */
+@keyframes myhook-1 {
+    0% {transform: translate(0, 0);}
+	50% {transform: translate(0, -15px);}
+	
+	
+    100% {transform: translate(0, 8px);}
+}
+
+@-webkit-keyframes myhook-2 {
+0% {-webkit-transform: translate(0, 0 );}
+50% {-webkit-transform: translate(0, -50px );}
+
+100% {-webkit-transform: translate(0, -15px );}
+}
+
+/* Standard syntax */
+@keyframes myhook-2 {
+    0% {transform: translate(0, 0px);}
+	50% {transform: translate(0, -50px);}
+	
+	
+    100% {transform: translate(0, -15px);}
+}
+
+
+/*-----------------------------------------blink----------------------- */
+
+
+
+/*ADDED  */
+
+.KMLeftFluid1 {
+    animation: KMLeftFluid1 2s;
+}
+
+@keyframes KMLeftFluid1 {
+    0% {
+        top: 222px; left: 332px; width: 14px; height: 37px;
+    }
+    100% {
+        top: 215.6px; left: 332px; width: 14px; height: 43.4px;
+    }
+}
+
+.KMLeftFluid2 {
+    animation: KMLeftFluid2 2s;
+}
+
+@keyframes KMLeftFluid2 {
+    0% {
+        top: 215.6px; left: 332px; width: 14px; height: 43.4px;
+    }
+    100% {
+        top: 209.2px; left: 332px; width: 14px; height: 49.8px;
+    }
+}
+
+.KMLeftFluid3 {
+    animation: KMLeftFluid3 2s;
+}
+
+@keyframes KMLeftFluid3 {
+    0% {
+        top: 209.2px; left: 332px; width: 14px; height: 49.8px;
+    }
+    100% {
+        top: 202.8px; left: 332px; width: 14px; height: 56.2px;
+    }
+}
+
+.KMLeftFluid4 {
+    animation: KMLeftFluid4 2s;
+}
+
+@keyframes KMLeftFluid4 {
+    0% {
+        top: 202.8px; left: 332px; width: 14px; height: 56.2px;
+    }
+    100% {
+        top: 196.4px; left: 332px; width: 14px; height: 62.6px;
+    }
+}
+
+.KMLeftFluid5 {
+    animation: KMLeftFluid5 2s;
+}
+
+@keyframes KMLeftFluid5 {
+    0% {
+        top: 196.4px; left: 332px; width: 14px; height: 62.6px;
+    }
+    100% {
+        top: 190px; left: 332px; width: 14px; height: 69px;
+    }
+}
+
+.KMRightFluid1 {
+    animation: KMRightFluid1 2s;
+}
+
+@keyframes KMRightFluid1 {
+    0% {
+        top: 222px; left: 381px; width: 14px; height: 37px;
+    }
+    
+    100% {
+        top: 229.2px; left: 381px; width: 14px; height: 29.6px;
+    }
+}
+
+.KMRightFluid2 {
+    animation: KMRightFluid2 2s;
+}
+
+@keyframes KMRightFluid2 {
+    0% {
+        top: 229.2px; left: 381px; width: 14px; height: 29.6px;
+    }
+    
+    100% {
+        top: 236.4px; left: 381px; width: 14px; height: 22.2px;
+    }
+}
+
+.KMRightFluid3 {
+    animation: KMRightFluid3 2s;
+}
+
+@keyframes KMRightFluid3 {
+    0% {
+        top: 236.4px; left: 381px; width: 14px; height: 22.2px;
+    }
+    
+    100% {
+        top: 243.6px; left: 381px; width: 14px; height: 14.8px;
+    }
+}
+
+.KMRightFluid4 {
+    animation: KMRightFluid4 2s;
+}
+
+@keyframes KMRightFluid4 {
+    0% {
+        top: 243.6px; left: 381px; width: 14px; height: 14.8px;
+    }
+    
+    100% {
+        top: 250.8px; left: 381px; width: 14px; height: 7.4px;
+    }
+}
+
+.KMRightFluid5 {
+    animation: KMRightFluid5 2s;
+}
+
+@keyframes KMRightFluid5 {
+    0% {
+        top: 250.8px; left: 381px; width: 14px; height: 7.4px;
+    }
+    
+    100% {
+        top: 258px; left: 381px; width: 14px; height: 0px;
+    }
+}
+
+.movePin1 {
+    animation: movePin1 2s;
+}
+
+@keyframes movePin1 {
+    0% {
+        top: 259px;
+    }
+    100% {
+        top: 245px;
+    }
+}
+
+.movePin2 {
+    animation: movePin2 2s;
+}
+
+@keyframes movePin2 {
+    0% {
+        top: 245px;
+    }
+    100% {
+        top: 231px;
+    }
+}
+
+.movePin3 {
+    animation: movePin3 2s;
+}
+
+@keyframes movePin3 {
+    0% {
+        top: 231px;
+    }
+    100% {
+        top: 217px;
+    }
+}
+
+.movePin4 {
+    animation: movePin4 2s;
+}
+
+@keyframes movePin4 {
+    0% {
+        top: 217px;
+    }
+    100% {
+        top: 203px;
+    }
+}
+
+.movePin5 {
+    animation: movePin5 2s;
+}
+
+@keyframes movePin5 {
+    0% {
+        top: 203px;
+    }
+    100% {
+        top: 189px;
+    }
+}
+
+.rotateGatewall {
+    animation: rotateGatewallll 3s infinite linear;
+}
+  
+  @keyframes rotateGatewallll {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(-359deg);
+    }
+  }
+
+
+td, th {
+    border: 1px solid #999; 
+    padding: 0.2rem;
+}
+th {
+    background: lightblue;
+    color: #000;
+}
+
+tbody {
+    display: block;
+    /* height: auto; */
+    max-height: 200px;
+    overflow: auto;
+}
+thead, tbody tr {
+    display: table;                 /*This can be removed.*/
+    width: 100%;
+    table-layout: fixed;/* even columns width , fix width of table too*/
+}
+
+
+
+/*                 SHINING                  */
+
+.content-shine{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 12px 48px;
+    color: #ffffff;
+    background: linear-gradient(to right, #4d4d4d 0, white 10%, #4d4d4d 20%);
+    background-position: 0;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s infinite linear;
+    animation-fill-mode: forwards;
+    -webkit-text-size-adjust: none;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+    
+@keyframes shine{
+    0%{
+        background-position: 0
+    }
+    100%{
+        background-position: 500px
+    }
+}
+
+
+/* Step5 p tag */
+.step5p {
+    font-weight: 700;
+    text-align: center;
+    font-size: 40px;
+    font-family: Hack, sans-serif;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #000, #fff, #000);
+    letter-spacing: 5px;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    animation: shine2 3s linear infinite;
+    position: relative;
+  }
+  
+  @keyframes shine2 {
+    0% {
+      background-position-x: -500%;
+    }
+    100% {
+      background-position-x: 500%;
+    }
+  }
+
+.fontColorChange{
+    color: rgb(7, 177, 12);
+}
+
+
+/* BATCH ADDS */
+
+#rangeValueEthyl {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 1em;
+    color: #999;
+    font-weight: 400;
+  }
+  #rangeValueNaOH {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 1em;
+    color: #999;
+    font-weight: 400;
+  }
+  .range {
+    width: 150px;
+    height: 10px;
+    -webkit-appearance: none;
+    background: #111;
+    outline: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: inset 0 0 5px rgba(255, 0, 0, 1);
+  }
+  .range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #00fd0a;
+    cursor: pointer;
+    border: 4px solid #333;
+    box-shadow: -407px 0 0 400px #00fd0a;
+  }
+  
+  .rodHori 
+  {
+	  animation : rotateRodHori 0.5s infinite linear;
+  }
+  
+@-webkit-keyframes rotateRodHori
+{
+  from{ transform: rotateY(0deg); }
+	to {transform: rotateY(180deg); }
+}
+
+@keyframes rotateRodHori
+{
+  from{ transform: rotateY(0deg); }
+	to {transform: rotateY(180deg); }
+}
+
+@-webkit-keyframes rainfall{
+	0% {
+		background-position: 8% 80%;
+		opacity: 1;
+	}
+
+	100% {
+		
+		background-position: 0 0;
+		opacity: 1;
+	}
+}
+@keyframes rainfall 
+{
+	0% {
+		background-position: 8% 80%;
+		opacity: 1;
+	}
+
+	100% {
+		
+		background-position: 0 0;
+		opacity: 1;
+	}
+	
+}
+
+.tank {
+	position: absolute;
+	left: 365px; 
+	top:441px; 
+	width: 112px; 
+	height: 34.5px;
+	transform: translate(-30%, -30%);
+	background: url("../images/static.png");
+	background-position: 0px 0px;
+	background-repeat: repeat-x;
+	animation: tankFilling 8s linear infinite;
+	opacity:0.6;
+	z-index:2;
+}
+
+@keyframes tankFilling {
+	0% {background-position: 0px 0px;}
+	100% {background-position: 750px 0px;}
+}
+@-webkit-keyframes tankFilling {
+	0% {background-position: 0px 0px;}
+	100% {background-position: 750px 0px;}
+}
+
+@keyframes moveTubeA1 
+{
+	0% {left: 520px; top:250px;}
+	50% {left: 265px; top:150px;}
+	100% {left: 265px; top:280px;}
+}
+@-webkit-keyframes moveTubeA1 
+{
+	0% {left: 520px; top:250px;}
+	50% {left: 265px; top:150px;}
+	100% {left: 265px; top:280px;}
+}
+
+@keyframes moveTubeA2 
+{
+	0% {left: 265px; top:280px;}
+	100% {left: 200px; top:5px;}
+}
+@-webkit-keyframes moveTubeA2 
+{
+	0% {left: 265px; top:280px;}
+	100% {left: 200px; top:5px;}
+}
+
+@keyframes moveTubeB
+{
+	0% {left: 662.5px; top:250px;}
+	100% {left: 200px; top:5px;}
+}
+@-webkit-keyframes moveTubeB  
+{
+	0% {left: 662.5px; top:250px;}
+	100% {left: 200px; top:5px;}
+}
+
+@keyframes rotateTubeB
+{
+	0% {transform:rotate(0deg);}
+	100% {transform:rotate(-90deg);}
+}
+@-webkit-keyframes rotateTubeB 
+{
+	0% {transform:rotate(0deg);}
+	100% {transform:rotate(-90deg);}
+}
+
+@-webkit-keyframes rotateRodHori
+{
+  from{ transform: rotateY(0deg); }
+	to {transform: rotateY(180deg); }
+}
+
+@keyframes rotateRodHori
+{
+  from{ transform: rotateY(0deg); }
+	to {transform: rotateY(180deg); }
+}
