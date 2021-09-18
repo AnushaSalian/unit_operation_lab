@@ -139,27 +139,35 @@ function magic()
 			document.getElementById("nextButton").style.visibility = "hidden";
 			document.getElementById("evaluatePart").style.visibility = "visible";
 		}
-	} else if (simsubscreennum == 4) {
+	} 
+	else if (simsubscreennum == 4) 
+	{
 		document.getElementById("goBackButton").style.visibility = "visible";
 		document.getElementById("obserButton").style.visibility = "visible";
-    document.getElementById("observeTable").style.visibility = "hidden";
-    if (chosenActivity == 1) {
-      document.getElementById("nextButton").style.visibility = "hidden";
-      document.getElementById("step4Heading").innerText = "Experiment";
-      document.getElementById("obserButton").onclick = "";
-      document.getElementById("goBackButton").onclick = function () {
-        if (dataOn == 0) {
-          document.getElementById("displayExpValues").style.visibility =
-            "visible";
-          dataOn = 1;
-          console.log(dataOn);
-        } else if (dataOn == 1) {
-          document.getElementById("displayExpValues").style.visibility =
-            "hidden";
-          dataOn = 0;
-          console.log(dataOn);
-        }
-      };
+		document.getElementById("observeTable").style.visibility = "hidden";
+		if (chosenActivity == 1)
+		{
+			document.getElementById("nextButton").style.visibility = "hidden";
+			document.getElementById("step4Heading").innerText = "Experiment";
+			document.getElementById("obserButton").onclick = "";
+			document.getElementById("goBackButton").onclick = function () 
+			{
+				document.getElementById("acetConc").innerHTML=document.getElementById("acConc").value+" M";
+				document.getElementById("ohConce").innerHTML=document.getElementById("ohConc").value+" M";
+				document.getElementById("reactTemp").innerHTML=document.getElementById("reactionTemp").value+"&deg; Celsius";
+				if (dataOn == 0) 
+				{
+					document.getElementById("displayExpValues").style.visibility ="visible";
+					dataOn = 1;
+					console.log(dataOn);
+				} 
+				else if (dataOn == 1)
+				{
+					document.getElementById("displayExpValues").style.visibility = "hidden";
+					dataOn = 0;
+					console.log(dataOn);
+				}
+			};
 	  document.getElementById("obserButton").onclick = function ()
 	  {
 		 document.getElementById("highlight").style.visibility="hidden";
@@ -183,6 +191,9 @@ function magic()
     }
 	document.getElementById("restart").onclick=function()
 	{
+		clearInterval(incTimer);
+		incTimer=0;
+		min=0; sec=0;
 		document.getElementById("setupButton").disabled=false;
 		document.getElementById("highlight").style.visibility = "hidden";
 		document.getElementById("experimentID").style.visibility = "hidden";
@@ -473,249 +484,75 @@ function gotoExp() {
   };
 }
 
-function hideAllExperimentParts() {
-  document.getElementById("displayExpValues").style.visibility = "hidden";
-
-  document.getElementById("overflow").style.visibility = "hidden";
-  document.getElementById("experimentID").style.visibility = "hidden";
-  // document.getElementById("waterSteady").style.visibility = "hidden";
-  document.getElementById("obserButton").style.visibility = "hidden";
-
-  document.getElementById("obserButton").style.visibility = "hidden";
+function hideAllExperimentParts() 
+{
+	document.getElementById("displayExpValues").style.visibility = "hidden";
+	document.getElementById("overflow").style.visibility = "hidden";
+	document.getElementById("experimentID").style.visibility = "hidden";
+	// document.getElementById("waterSteady").style.visibility = "hidden";
+	document.getElementById("obserButton").style.visibility = "hidden";
+	document.getElementById("obserButton").style.visibility = "hidden";
 }
 
 // ADDED By Jaison.
 var chosenActivity;
 
-function selectAction(n) {
-  chosenActivity = n;
-  console.log(chosenActivity);
-  simsubscreennum = 5;
-  gotoPage5();
+function selectAction(n) 
+{
+	chosenActivity = n;
+	console.log(chosenActivity);
+	simsubscreennum = 5;
+	gotoPage5();
 }
 
-// Values from experimental page of experiment PART, not the evaluation.:
-var firstML = 1;
-
-function setMLone() {
-  firstML = document.getElementById("firstMLValue").value;
-  console.log(firstML);
+function gotoObservation() 
+{
+	document.getElementById("step4Heading").innerText = "Observations";
+	document.getElementById("experimentID").style.visibility = "hidden";
+	document.getElementById("observeTable").style.visibility = "visible";
+	document.getElementById("setupButton").onclick = function () 
+	{
+		document.getElementById("displayExpValues").style.visibility = "hidden";
+		document.getElementById("overflow").style.visibility = "hidden";
+		goBacktoStep2();
+	};
 }
 
-var secondML = 1;
+function goBacktoStep2() 
+{
+	document.getElementById("nextButton").style.visibility = "hidden";
+	document.getElementById("nextButton").style.zIndex = -1;
+	document.getElementById("nextButton").style.visibility = "hidden";
+	document.getElementById("experimentID").style.visibility = "hidden";
+	document.getElementById("obserButton").style.visibility = "hidden";
+	document.getElementById("observeTable").style.visibility = "hidden";
+	//
+	document.getElementById("restart").style.visibility = "hidden";
+	document.getElementById("goBackButton").style.visibility = "hidden";
+	document.getElementById("obserButton").style.visibility = "hidden";
+	document.getElementById("observeTable").style.visibility = "hidden";
+	document.getElementById("msg").style.visibility = "hidden";
+	document.getElementById("displayExpValues").style.visibility = "hidden";
+	document.getElementById("observations").style.visibility = "hidden";
 
-function setMLtwo() {
-  firstML = document.getElementById("secondMLValue").value;
-  console.log(firstML);
+	simsubscreennum = 3;
+	document.getElementById("canvas" + 4).style.visibility = "hidden";
+
+	document.getElementById("canvas" + simsubscreennum).style.visibility =
+	"visible";
+	document.getElementById("experimentSetup").style.visibility = "visible";
+	document.getElementById("nextButton").style.visibility = "visible";
 }
 
-function gotoObservation() {
-  document.getElementById("step4Heading").innerText = "Observations";
-  document.getElementById("experimentID").style.visibility = "hidden";
-  document.getElementById("observeTable").style.visibility = "visible";
-  document.getElementById("setupButton").onclick = function () {
-    document.getElementById("displayExpValues").style.visibility = "hidden";
-
-    document.getElementById("overflow").style.visibility = "hidden";
-    goBacktoStep2();
-  };
-}
-
-function goBacktoStep2() {
-  document.getElementById("nextButton").style.visibility = "hidden";
-  document.getElementById("nextButton").style.zIndex = -1;
-  document.getElementById("nextButton").style.visibility = "hidden";
-  document.getElementById("experimentID").style.visibility = "hidden";
-  document.getElementById("obserButton").style.visibility = "hidden";
-  document.getElementById("observeTable").style.visibility = "hidden";
-  //
-  document.getElementById("restart").style.visibility = "hidden";
-  document.getElementById("goBackButton").style.visibility = "hidden";
-  document.getElementById("obserButton").style.visibility = "hidden";
-  document.getElementById("observeTable").style.visibility = "hidden";
-  document.getElementById("msg").style.visibility = "hidden";
-  document.getElementById("displayExpValues").style.visibility = "hidden";
-  document.getElementById("observations").style.visibility = "hidden";
-
-  simsubscreennum = 3;
-  document.getElementById("canvas" + 4).style.visibility = "hidden";
-
-  document.getElementById("canvas" + simsubscreennum).style.visibility =
-    "visible";
-  document.getElementById("experimentSetup").style.visibility = "visible";
-  document.getElementById("nextButton").style.visibility = "visible";
-}
-
-// ============================  EVALUATION PART
-
-// Step 3
-
-var evalSets = 1;
-
-function setEvalSets() {
-  evalSets = document.getElementById("evalSets").value;
-  console.log(evalSets);
-
-  var table = document.getElementById("configInputTable");
-
-  var rowCount = table.rows.length - 1;
-  console.log("Pre count:  ", rowCount);
-  if (rowCount > 0) {
-    for (var x = 1; x <= rowCount; x++) {
-      table.deleteRow(1);
-    }
-  }
-
-  for (var i = 1; i <= evalSets; i++) {
-    var row = table.insertRow(i);
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    var cell3 = row.insertCell(2);
-    var cell4 = row.insertCell(3);
-    cell1.innerHTML = `<input name="length" id="inputSet${i}0" style="width:90px" type="number">`;
-    cell2.innerHTML = `<input name="length" id="inputSet${i}1" style="width:90px" type="number">`;
-    cell3.innerHTML = `<input name="length" id="inputSet${i}2" style="width:90px" type="number">`;
-    cell4.innerHTML = `<input name="length" id="inputSet${i}3" style="width:90px" type="number">`;
-  }
-}
-
-function evaluateConfig() {
-  var table = document.getElementById("configInputTable");
-  var resultTable = document.getElementById("configResultTable");
-
-  var rowCountPost = table.rows.length - 1;
-
-  console.log("Total rows: ", rowCountPost);
-  for (var z = 1; z <= rowCountPost; z++) {
-    var out = document.getElementById("showResRey");
-    out.innerText = "Calculating...";
-
-    // taking values from columns
-    lpm = document.getElementById("inputSet" + z + "0").value;
-    pres = document.getElementById("inputSet" + z + "1").value;
-    reyn = document.getElementById("inputSet" + z + "2").value;
-    fric = document.getElementById("inputSet" + z + "3").value;
-
-    presInMeter = pres / 100;
-    if (processFluidEval == "Water") {
-      den = 1000;
-      // visco = 0.89;
-      visco = 0.001;
-    } else if (processFluidEval == "Kerosene") {
-      den = 820;
-      // visco = 0.00164;
-      visco = 0.00215;
-    }
-    diaMeter = chosenPipeDiaEval / 39.37; // convert inch to meter
-    console.log("Diameter is inch: ", chosenPipeDiaEval);
-    console.log("Diameter of the pipe in meter is: ", diaMeter);
-    console.log("Radius is: ", diaMeter / 2);
-    lpmConvVelocity =
-      (lpm * 0.000017) / (3.14 * (diaMeter / 2) * (diaMeter / 2)); // convert lpm to m3/s              V E L O C I T Y
-    console.log("Velocity value is: ", lpmConvVelocity);
-    // if(manoFluidEval == "Carbon tetrachloride"){
-    // 	visco = 0.901;
-    // }
-    // else if(manoFluidEval == "Mercury"){
-    // 	visco = 1.55;
-    // }
-    console.log(
-      "Viscosity value of " + processFluid + " at 20 deg C is: ",
-      visco
-    );
-    console.log("Density of " + processFluidEval + " fluid is: ", den);
-    // Calculate Reynold's
-    calculatedReyn = (den * diaMeter * lpmConvVelocity) / visco;
-    calculatedReyn = calculatedReyn.toFixed(5); // ======    toFixed(5)
-    console.log("Calculated Reynold's value is: ", calculatedReyn);
-
-    var outFric = document.getElementById("showResInFric");
-
-    // ========================================================= Friction Factor calculation.
-    if (manoFluidEval == "Carbon tetrachloride") {
-      denMano = 1600;
-    } else if (manoFluidEval == "Mercury") {
-      denMano = 13600;
-    }
-    console.log(
-      "Manometric density value of " + manoFluidEval + " is: ",
-      denMano
-    );
-
-    // calculate hf value
-    hf = ((denMano - den) * presInMeter) / den;
-    console.log("Calculated hf value's: ", hf);
-
-    console.log("Length of pipe is: ", pipeLengthEval);
-    // calculate FF
-    calculatedFricFact =
-      (2 * 9.8 * diaMeter * hf) /
-      (4 * pipeLengthEval * lpmConvVelocity * lpmConvVelocity);
-    calculatedFricFact = calculatedFricFact * 10000;
-    calculatedFricFact = calculatedFricFact.toFixed(5); //========     toFixed(5)
-    console.log("Calculated F F value is: ", calculatedFricFact);
-
-    // Compare Reynold's and Friction Factor.
-    console.log("The rey value taken in is: ", reyn);
-    setTimeout(() => {
-      // if the count of rows in result table is more than 3, increase the top of both of the result showing paragraph.
-      var resultTable = document.getElementById("configResultTable");
-      var rowCountPost = resultTable.rows.length - 1;
 
 
-      //   -----------------------       DELETING ALL ROWS AND CHANGING THE NUMBER OF SETS BACK TO 0.
-      var table = document.getElementById("configInputTable");
-      table.style.color = "#fff";
-      var rowCounttt = table.rows.length - 1;
-      console.log("Count of rows after showing result is:  ", rowCounttt);
-      document.getElementById("evalSets").value = 0;
-      if (rowCounttt > 0) {
-        for (var xx = 1; xx <= rowCounttt; xx++) {
-          table.deleteRow(1);
-        }
-      }
-      out.innerText = "";
-    }, 300);
-    setTimeout(() => {
-      out.innerText = "";
-      outFric.innerText = "";
-    }, 5000);
-
-    // Add to result table.
-    var row = resultTable.insertRow(z);
-    row.style.color = "#fff";
-    var reyCell = row.insertCell(0);
-    var fricCell = row.insertCell(1);
-    reyCell.innerHTML = calculatedReyn;
-    fricCell.innerHTML = calculatedFricFact;
-  }
-}
-
-let settop = 100;
-let oldAngle = 0;
-let leftMotorPos = 220;
-let rightMotorPos = 220;
 let liquidPos = { top: 235, height: 10 };
 let imgIndex = 0;
 let waveIndex = 0;
-let naohSetFirst=false;
-let ethyleSetFirst=false;
-let naohEthyleSet=0;
 
-
-// setInterval(() => {
-  // rotameterAnimation("leftMotor");
-  // rotameterAnimation("rightMotor");
-  // waveAnimation("liquidLid");
-// }, 350);
-
-let totVol = 1,
-  eaConc = 0.02,
-  shConc = 0.02,
-  setTemp = 30;
+let totVol = 1, eaConc = 0.02, shConc = 0.02, setTemp = 30;
  // k = 0;
-let eaLPH = 0,
-  shLPH = 0;
+let eaLPH = 0, shLPH = 0;
 
 // slider
 function rangeSlideEthyl(value) {
@@ -794,7 +631,7 @@ function calcConductivity(time)
 	//tau = V * 3600 / 1000 / (Va + Vb);
 	Cao = (Cas * Va) / (Va + Vb);
 	Cbo = (Cbs * Vb) / (Va + Vb);
-	M = Cbs * Vb / Cas / Va;
+	M = (Cbs * Vb) / (Cas * Va);
 	// exp=(2.7182818284590452353602874713527  ** (k*tau*Cao*(M-1)));
 	exp=(2.7182818284590452353602874713527  ** (k*time*Cao*(M-1)));
 	if(M>1)
@@ -893,10 +730,11 @@ const displayTubeB = function (Va,tubeImages,imgId) {
   document.getElementById(imgId).src = tubeImages[imgIndex];
 };
 
-let rTemp=30;
+let rTemp=0;
 function setReactorTemp()
 {
 	rTemp=document.getElementById("reactionTemp").value;
+	document.getElementById("reactTemp").value=rTemp+"&deg; Celsius";
 }
 
 let interval=0;
@@ -929,6 +767,7 @@ function pourNaOH()
 					{
 						document.getElementById("tubeB").style.visibility="hidden";
 						document.getElementById("heater").style.backgroundColor="red";
+						rTemp=document.getElementById("reactionTemp").value;
 						document.getElementById("setTemp").innerHTML=rTemp;
 						setCurrentTemperature(rTemp-4,rTemp);
 						setTimeout(function()
@@ -991,7 +830,7 @@ function addEthylToReactor()
 				document.getElementById("time").style.visibility="visible";
 				time=0; min=0; sec=0;
 				// calcConductivity(time);
-				// document.getElementById("conduct").style.visibility = "visibile";
+				document.getElementById("conduct").style.visibility = "visibile";
 				document.getElementById("conduct").innerHTML=actCond.toFixed(2);
 				incTimer=setInterval(function(){incrementTimer()},1000);
 			},100);
@@ -1001,19 +840,27 @@ function addEthylToReactor()
 let minToSec=0;
 function incrementTimer()
 {
-	sec=sec+15;
-	if(sec%60==0)
+	if(min<=900)
 	{
-		sec=0;
-		document.getElementById("sec").innerHTML=sec;
-		min=min+1;
-		document.getElementById("min").innerHTML=min;
+		sec=sec+15;
+		if(sec%60==0)
+		{
+			sec=0;
+			document.getElementById("sec").innerHTML=sec;
+			min=min+1;
+			document.getElementById("min").innerHTML=min;
+		}
+		else document.getElementById("sec").innerHTML=sec;
+		minToSec=(min*60)+sec;
+		calcConductivity(minToSec);
+		document.getElementById("conduct").innerHTML=actCond.toFixed(2);	
+		console.log(min,sec,minToSec,actCond.toFixed(2));
 	}
-	else document.getElementById("sec").innerHTML=sec;
-	minToSec=(min*60)+sec;
-	calcConductivity(minToSec);
-	document.getElementById("conduct").innerHTML=actCond.toFixed(2);	
-	console.log(min,sec,minToSec,actCond.toFixed(2));
+	else
+	{
+		clearInterval(incTimer);
+		incTimer=0;
+	}
 }
 
 function addReadingsToTable()
