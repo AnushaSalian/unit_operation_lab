@@ -14,14 +14,17 @@ top:0px;
 height: 600px; 
 width:800px;
 border:solid 1px;
+background-color:black;
 }
 
 #copyright{
 position: absolute;
-left:50px;
+left:280px;
 top: 580px;
 font-family: verdana; 
-font-size:12px
+font-size:12px;
+color:white;
+font-weight:bold;
 }
 
 .title{
@@ -40,15 +43,15 @@ text-transform: uppercase;
 
 .title2{
 position:absolute;
-width: 100%;
-left: 0px;
+width: 95%;
+left: 10px;
 top: 0px;
 height:40px;
 /* text-align:center; */
 background-color: black;
 font-family: verdana;
 color: White;
-text-transform: uppercase; 
+/* text-transform: uppercase;  */
 }
 
 .title h3{
@@ -60,7 +63,7 @@ margin:0px;
 padding-top:2px;
 font-size: 15px;
 /* margin:0px; */
-margin-left: 40px;
+margin-left: 50px;
 }
 
     

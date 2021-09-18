@@ -51,16 +51,17 @@
 
 </head>
 
-<body style="margin:0; font-family:verdana; font-size:14px;">
+<body style="margin:0; font-family:verdana; font-size:14px; " >
     <!--Simulation Screen start		-->
     <div id="simscreen">
 
         <!--Title of Simulation		-->
         <div id="titleLarge" class="title" style="visibility: visible;font-size:20px;">
-            <h3>Reaction Kinetic studies in plug flow reactor</h3>
+            <h3>Reaction kinetic studies in plug flow reactor</h3>
         </div>
-        <div id="titleSmall" class="title2" style="visibility:hidden">
-            <h5>Reaction Kinetic studies in plug flow reactor</h5>
+        &nbsp;<div id="titleSmall" class="title2" style="visibility:hidden; cursor:pointer;">
+            <h4 id="subTitle" >Reaction kinetic studies in plug flow reactor</h4>
+            <!-- <h4 id="subTitle" onmouseenter="changeSubTitle()" onmouseleave="changeSubTitleBack()" onclick="changeCanvas()">Reaction kinetic studies in plug flow reactor</h4> -->
         </div>
 
         <div id="buttonsList" style="position: absolute; visibility: hidden; top: 20px; left: 400px; color: white; z-index: 1;">
@@ -144,9 +145,9 @@
                     <li>
                         Click on <span class="fontColorChange">Evaluation</span> tab to check the Simulated Values.
                     </li>
-                    <li>
-                        To perform Experiment again click on title of experiment.
-                    </li>
+                    <!-- <li> -->
+                        <!-- To perform Experiment again click on title of experiment. -->
+                    <!-- </li> -->
                 </ul>
             </div>
 
@@ -163,27 +164,28 @@
             <img id="labelImage" style="visibility: hidden; position: absolute; left: 50px; top: 20px; width: 700px; height: 480px;" src="./Images/label.png">
 
             <!-- Evaluation part -->
-            <div id="configExp">
-                <p style="position: absolute; top: 50px; color: #1981e2;font-style: italic;">Reaction Temperature:
-                    <input style="position: absolute; left: 260px;" type="number" step="1" value="30" id="reactionTempEval" name="Reaction Temperature" min="30" max="50" onchange="setReactorVolumeEval();">
-                    <p style="color:#1981e2; position: absolute; left: 430px; top: 50px;font-style: italic;">° Celsius</p>
+            <div id="configExp" style="font-weight:bold;">
+                <p style="position: absolute; left:30px; top: 50px; color: #1981e2;font-style: italic;">Reaction Temperature :
+                    <input style="position: absolute; left: 260px;" type="number" step="1" value="30" id="reactionTempEval" name="Reaction Temperature" min="30" max="50">
+                    <p style="color:#1981e2; position: absolute; left: 440px; top: 50px;font-style: italic;">° Celsius</p>
                 </p>
-                <p style="position: absolute; top: 100px; color: rgb(131, 117, 117);font-style: italic;">Rate Constant(k):
-                    <input style="position: absolute; left: 260px;" type="number" value="" id="rateConstEval" onchange="setRateConstEval();">
+                <p style="position: absolute; left:30px; top: 100px; color: rgb(131, 117, 117);font-style: italic;">Rate Constant(k) :
+                    <input style="position: absolute; left: 260px;" type="number" value="" id="rateConstEval" >
                     <p style="color:rgb(131, 117, 117); position: absolute; left: 450px; top: 100px;font-style: italic;">Litre/gmol.min</p>
                 </p>
-                <p style="position: absolute; top: 150px; color:rgb(131, 117, 117);font-style: italic;">Frequency Factor(k<sub>°</sub>):
-                    <input style="position: absolute; left: 260px;" type="number" value="" id="freqFactor" onchange="setFreqFact();">
+                <p style="position: absolute; left:30px; top: 150px; color:rgb(131, 117, 117);font-style: italic;">Frequency Factor(k<sub>0</sub>) :
+                    <input style="position: absolute; left: 260px;" type="number" value="" id="freqFactor" >
                     <p style="color:rgb(131, 117, 117); position: absolute; left: 450px; top: 150px;font-style: italic;">x10<sup>8</sup> (Litre/gmol.min)</p>
                 </p>
-                <p style="position: absolute; top: 200px; color: rgb(131, 117, 117);font-style: italic;">Activation Energy:
-                    <input style="position: absolute; left: 260px;" type="number" value="" id="activationEnergy" onchange="setActiveEnergy();">
+                <p style="position: absolute;  left:30px; top: 200px; color: rgb(131, 117, 117);font-style: italic;">Activation Energy (E):
+                    <input style="position: absolute; left: 260px;" type="number" value="" id="activationEnergy" >
                     <p style="color:rgb(131, 117, 117); position: absolute; left: 450px; top: 200px;font-style: italic;">J/mol</p>
                 </p>
-                <button id="evaluateButtonFromData" style="position: absolute; top: 280px; left:75%; padding:15px;">EVALUATE</button>
+                <button id="evaluateButtonFromData" style="position: absolute; top: 280px; left:75%; padding:15px; font-weight:bold;">EVALUATE</button>
+				<div id="highlightEvaluation" style="position: absolute; top: -27.5px; left:655px; width: 92px; height:30px; border:4px solid yellow; border-radius:3px; visibility:hidden;"></div>
+
             </div>
 
-			<div id="highlightEvaluation" style="position: absolute; top: 80px; left:649; width: 126px; height:30px; border:5px solid yellow; border-radius:3px; visibility:hidden;"></div>
             <p id="v2" style="position:absolute;left: 530.5px; top:342px;font-family:verdana; font-size:14px;"></p>
 
         </div>
@@ -220,25 +222,25 @@
                 <!-- <p style="position: absolute; top: 30px; color: #fff;">Number of Observations:
                     <input type="number" value="0" id="evalSets" name="length" min="1" max="100" onchange="setEvalSets();">
                 </p> -->
-                <div style="position: absolute; border:  1px solid #fff; width: 790px; height: 210px;">
-                    <h3 style="position: absolute; width:auto; top: -10px; color:#fff; left:330px;">User values</h3>
-                    <table id="configInputTable" style="font-size: 12px;position:absolute; border: 1px solid #fff; width: 770px; top:30px; left:13px;">
-                        <tr style="">
-                            <th>Temperature(Celsius)</th>
-                            <th>Rate constant (litre/gmol.min)</th>
-                            <th>Frequency Factor x10<sup>(-8)</sup>(litre/gmol.min)</th>
-                            <th>Activation Energy(J/mol)</th>
+                <div style="position: absolute;  width: 790px; height: 200px;">
+                    <h3 style="position: absolute; width:auto; top: -20px; color:#fff; left:330px;">User values</h3>
+                    <table id="configInputTable" style="font-size: 12px; position:absolute; border: 1px solid #fff; width: 770px; top:15px; left:12px;">
+                        <tr style="background-color:lightgrey;">
+                            <th style="background-color:lightgrey;">Temperature(Celsius)</th>
+                            <th style="background-color:lightgrey;">Rate constant (litre/gmol.min)</th>
+                            <th style="background-color:lightgrey;">Frequency Factor x10<sup>(-8)</sup>(litre/gmol.min)</th>
+                            <th style="background-color:lightgrey;">Activation Energy (J/mol)</th>
                         </tr>
                     </table>
                 </div>
-                <div style="position: absolute; top:250px; border: 1px solid #fff; width: 790px; height: 240px;">
-                    <h3 style="position: absolute; width:auto; top: -6px; color:#fff; left:330px;">Simulated values</h3>
-                    <table id="configSimulatedTable" style="font-size: 12px;position:absolute; border: 1px solid #fff; width: 770px; top:40px; left:13px;">
-                        <tr style="">
-                            <th>Temperature(Celsius)</th>
-                            <th>Rate constant (litre/gmol.min)</th>
-                            <th>Frequency Factor x10<sup>(-8)</sup>(litre/gmol.min)</th>
-                            <th>Activation Energy(J/mol)</th>
+                <div style="position: absolute; top:250px; width: 790px; height: 230px;">
+                    <h3 style="position: absolute; width:auto; top: 0px; color:#fff; left:330px;">Simulated values</h3>
+                    <table id="configSimulatedTable" style="font-size: 12px; position:absolute; border: 1px solid #fff; width: 770px; top:40px; left:13px; ">
+                        <tr style="background-color:lightgrey;">
+                            <th style="background-color:lightgrey;">Temperature(Celsius)</th>
+                            <th style="background-color:lightgrey;">Rate constant (litre/gmol.min)</th>
+                            <th style="background-color:lightgrey;">Frequency Factor x10<sup>(-8)</sup>(litre/gmol.min)</th>
+                            <th style="background-color:lightgrey;">Activation Energy(J/mol)</th>
                         </tr>
                     </table>
                 </div>
@@ -250,7 +252,7 @@
                 </table> -->
                 <p id="showResRey" style="position: absolute; left: 300px; top: 400px;"></p>
                 <p id="showResInFric" style="position: absolute; left: 470px; top: 180px;"></p>
-
+				<button id="clearEvaluationReadings" style="position: absolute; left: 350px; top: 500px; padding:5px; font-weight:bold;">Clear All Readings</button>
                 <!-- <button style="position: absolute; left: 600px; top: 40px; width: 100px;" onclick="evaluateConfig();">EVALUATE</button> -->
             </div>
 
@@ -316,7 +318,7 @@
                 <input style="position: absolute; top: 400px; left: 658px;" type="number" value="1" id="secondMLValue" name="length" min="1" max="999" onchange="setMLtwo();">
                 <p style="position: absolute; top:390px; left: 740px;  z-index: 1; color: #64dd17; font-size: 15px;">ml</p> -->
             </div>
-
+			<div id="highlight" style="position: absolute; top: 481px; left: 649px; width: 126px; height:30px; border:5px solid yellow; border-radius:3px; visibility:hidden;"></div>
             <button id="restart" style="position: absolute; top: 490px; left: 318px; width: 144px; font-size:13px;">Restart Experiment</button>
 
             <button id="goBackButton" style="position: absolute; top: 490px; left: 525px; width: 124px; font-size:13px;">Experimental Data</button>
@@ -344,7 +346,7 @@
 					<p id="condVal" style="position: absolute; left:50px; top:-1px; font-size:20px; color:red; z-index:2; "></p>
 					<button id="addReading" style="position:absolute;  left:5px; top:50px; background-image: linear-gradient(to down, #FFEB99, #FED430, #E1B400, #C79F00, #a98700); width:auto; height:20px; border-radius:5px; cursor:pointer; border-color:darkgrey; z-index:2;">Add Current Readings</button>
 				</div>
-				<div id="highlight" style="position: absolute; top: 481px; left: 649px; width: 126px; height:30px; border:5px solid yellow; border-radius:3px; visibility:hidden;"></div>
+				
         </div>
 
 
@@ -402,9 +404,10 @@
         <img class="" id="arrow1" style="visibility:hidden" src="Images/arrow1.png" />
 
         <div id="copyright"> &copy;
-            <script>
-                document.write(new Date().getFullYear());
-            </script> SOLVE - The Virtual Lab @ NITK Surathkal, Department of Water Resources & Ocean Engineering</div>
+            <!-- <script> -->
+                <!-- document.write(new Date().getFullYear()); -->
+            <!-- </script>  -->
+			SOLVE - The Virtual Lab @ NITK Surathkal</div>
 </body>
 
 </html>
