@@ -786,8 +786,8 @@ function calcConductivity(time)
 	calcVaVb();
 	V=Number(Va+Vb);
 	T = Number(document.getElementById("reactionTemp").value);
-	// k  = Number(648868942 * (2.7182818284590452353602874713527  ** (-45574/(8.314*(T+273)))));
-	T=time;
+	//k  = Number(648868942 * (2.7182818284590452353602874713527  ** (-45574/(8.314*(T+273)))));
+	//T=time;
 	k  = Number(648868942 * (2.7182818284590452353602874713527  ** (-45574/8.314/(T+273))));
 	//oldCond = actCond;
 	// tau = (V * 3600) / (1000 * (Va + Vb));
@@ -814,22 +814,23 @@ function calcConductivity(time)
 	{
 		actCond=0;
 	}
-	// console.log(`Cas = ${Cas}, 
-	// Cbs = ${Cbs},
-	// Va = ${Va},
-	// Vb = ${Vb},
-	// V = ${V},
-	// T= ${T},
-	// k= ${k},
-	// tau= ${tau},
-	// Cao= ${Cao},
-	// Cbo= ${Cbo},
-	// M= ${M},
-	// Xa= ${Xa},
-	// Ca= ${Ca},
-	// Cb= ${Cb},
-	// condAmb= ${condAmb},
-	// actCond= ${actCond}`);
+	console.log(`Cas = ${Cas}, 
+	Cbs = ${Cbs},
+	Va = ${Va},
+	Vb = ${Vb},
+	V = ${V},
+	T = ${T},
+	time = ${time},
+	k = ${k},
+	tau = ${tau},
+	Cao = ${Cao},
+	Cbo = ${Cbo},
+	M = ${M},
+	Xa = ${Xa},
+	Ca = ${Ca},
+	Cb = ${Cb},
+	condAmb = ${condAmb},
+	actCond = ${actCond}`);
 }
 
 function addNaOHToReactor()
